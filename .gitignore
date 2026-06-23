@@ -11,3 +11,4 @@ wheels/
 .env
 *.ipynb_checkpoints
 *.db*
+models/
