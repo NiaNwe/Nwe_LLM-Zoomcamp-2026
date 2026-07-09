@@ -17,67 +17,66 @@ CONTEXT:
 
 
 class RAGBase:
+
     def __init__(
         self,
         index,
         llm_client,
         instructions=INSTRUCTIONS,
         prompt_template=PROMPT_TEMPLATE,
-        model="gpt-5.4-mini",
+        course='llm-zoomcamp',
+        model='gpt-5.4-mini'
     ):
         self.index = index
         self.llm_client = llm_client
         self.instructions = instructions
+        self.course = course
         self.prompt_template = prompt_template
         self.model = model
-        self.last_response = None
 
     def search(self, query, num_results=5):
+        boost_dict = {'question': 3.0, 'section': 0.5}
+        filter_dict = {'course': self.course}
+
         return self.index.search(
             query,
             num_results=num_results,
-            boost_dict={"content": 1.0},
+            boost_dict=boost_dict,
+            filter_dict=filter_dict
         )
 
     def build_context(self, search_results):
-        context = ""
+        lines = []
 
         for doc in search_results:
-            context += f"filename: {doc['filename']}\n"
-            context += f"content: {doc['content']}\n\n"
+            lines.append(doc['section'])
+            lines.append('Q: ' + doc['question'])
+            lines.append('A: ' + doc['answer'])
+            lines.append('')
 
-        return context.strip()
+        return '\n'.join(lines).strip()
 
     def build_prompt(self, query, search_results):
         context = self.build_context(search_results)
-
         return self.prompt_template.format(
-            question=query,
-            context=context,
+            question=query, context=context
         )
 
     def llm(self, prompt):
         input_messages = [
-            {"role": "developer", "content": self.instructions},
-            {"role": "user", "content": prompt},
+            {'role': 'developer', 'content': self.instructions},
+            {'role': 'user', 'content': prompt}
         ]
 
         response = self.llm_client.responses.create(
             model=self.model,
-            input=input_messages,
+            input=input_messages
         )
 
-        self.last_response = response
-
-        return response
+        return response.output_text
 
     def rag(self, query):
         search_results = self.search(query)
         prompt = self.build_prompt(query, search_results)
-
-        response = self.llm(prompt)
-
-        answer = response.output_text
-        input_tokens = response.usage.input_tokens
-
-        return answer, input_tokens
+        answer = self.llm(prompt)
+        return answer
