@@ -1,0 +1,19 @@
+{
+  "session_id": "session-001",
+  "timestamp": "2026-07-13T15:43:00.533790+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "How do I build a dlt pipeline?"
+    },
+    {
+      "role": "assistant",
+      "content": "You can use dlt to build data pipelines easily..."
+    }
+  ],
+  "model": "claude-3-5-sonnet",
+  "tokens": {
+    "input": 150,
+    "output": 320
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "session_id": "session-005",
+  "timestamp": "2026-07-18T13:43:00.534275+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "How do I deploy to production?"
+    },
+    {
+      "role": "assistant",
+      "content": "For production deployment..."
+    }
+  ],
+  "model": "claude-3-5-sonnet",
+  "tokens": {
+    "input": 70,
+    "output": 200
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "session_id": "session-002",
+  "timestamp": "2026-07-15T15:43:00.534265+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Write a Python script to fetch data from an API"
+    },
+    {
+      "role": "assistant",
+      "content": "Here's a script using requests library..."
+    }
+  ],
+  "model": "claude-3-5-sonnet",
+  "tokens": {
+    "input": 100,
+    "output": 280
+  }
+}

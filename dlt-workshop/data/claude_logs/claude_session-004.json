@@ -1,0 +1,19 @@
+{
+  "session_id": "session-004",
+  "timestamp": "2026-07-18T15:43:00.534272+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Debug my pipeline"
+    },
+    {
+      "role": "assistant",
+      "content": "I'm inspecting your pipeline..."
+    }
+  ],
+  "model": "claude-3-5-sonnet",
+  "tokens": {
+    "input": 95,
+    "output": 150
+  }
+}

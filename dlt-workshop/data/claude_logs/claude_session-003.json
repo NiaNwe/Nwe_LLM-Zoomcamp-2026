@@ -1,0 +1,19 @@
+{
+  "session_id": "session-003",
+  "timestamp": "2026-07-17T15:43:00.534269+00:00",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Explain REST APIs"
+    },
+    {
+      "role": "assistant",
+      "content": "REST (Representational State Transfer) is..."
+    }
+  ],
+  "model": "claude-3-5-sonnet",
+  "tokens": {
+    "input": 80,
+    "output": 420
+  }
+}

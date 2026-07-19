@@ -1,0 +1,12 @@
+[runtime]
+log_level="WARNING"
+dlthub_telemetry = true
+request_max_attempts = 10     # retries on 429 / 5xx before failing
+request_backoff_factor = 1.5  # multiplier for exponential backoff delay
+request_timeout = 120         # seconds before a single request times out
+request_max_retry_delay = 60  # caps the wait between retries
+workspace_id = "c0fd786f-34b7-4712-81fd-81521960b27d"
+organization_id = "acb704d2-99c6-41e5-8bc6-60543c3a6490"
+
+[workspace.settings]
+name = "playground"
